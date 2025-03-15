@@ -94,6 +94,12 @@ def check_delivery_file(file_path, progress_bar, status_text):
                 if "." in brand_validated:
                     errors.append([index+2, "BRAND_VALIDATED", brand_validated, "Brand contains '.'"] + full_row_data)
 
+                 # ✅ Parenthesis check in brand
+                if "(" in brand and ")" in brand:
+                    boi_inside_parenthesis = re.search(r"\((.*?)\)", brand)
+                    if boi_inside_parenthesis and boi_inside_parenthesis.group(1) != boi:
+                        errors.append([index+2, "BRAND_VALIDATED", brand_validated, "BOI contains parentheses"] + full_row_data)
+
                 # ✅ Global Brand Extension should not have parentheses
                 if "(" in global_extension or ")" in global_extension:
                     errors.append([index+2, "BRAND_VALIDATED", brand_validated, "Global Brand Extension contains parentheses"] + full_row_data)
