@@ -204,7 +204,7 @@ def check_delivery_file(file_path, progress_bar, status_text):
                     if "(" in raw_brand and ")" in raw_brand:
                         boi_inside_parenthesis = re.search(r"\((.*?)\)", raw_brand)
                         if boi_inside_parenthesis and boi_inside_parenthesis.group(1) != boi:
-                            errors.append([index+2, "BRAND_VALIDATED", brand_validated, "BOI contains parentheses mismatch"] + full_row_data)
+                            errors.append([index+2, "BRAND_VALIDATED", brand_validated, "BOI contains parentheses"] + full_row_data)
 
                     if "(" in gbe or ")" in gbe:
                         errors.append([index+2, "BRAND_VALIDATED", brand_validated, "Global Brand Extension contains parentheses"] + full_row_data)
